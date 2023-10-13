@@ -5,12 +5,12 @@ import Footer from './Footer.js'
 const Layout = (props) => {
     return (
         <>
-            <Header/>
-            <main style={{minHeight:"80vh"}}>
-            {props.children}
+            <Header />
+            <main style={{ minHeight: "70vh" }}>
+                {props.children}
             </main>
-            <Footer/>
-            
+            <Footer />
+
         </>
     )
 }
