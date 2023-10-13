@@ -4,10 +4,10 @@ import Layout from "../components/layout/Layout.js"
 const HomePage = () => {
     return (
         <>
-            <Layout>
-                <h1>
+            <Layout title={"supra watches"}>
+                <h4>
                     HomePage
-                </h1>
+                </h4>
             </Layout >
         </>
     )
