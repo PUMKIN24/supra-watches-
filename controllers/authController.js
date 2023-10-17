@@ -7,19 +7,19 @@ export const registerController = async (req, res) => {
         const { name, email, password, phone, address } = req.body
         //validations
         if (!name) {
-            return res.send({ error: "Name is required" })
+            return res.send({ message: "Name is required" })
         }
         if (!email) {
-            return res.send({ error: "Email is required" })
+            return res.send({ message: "Email is required" })
         }
         if (!password) {
-            return res.send({ error: "Password is required" })
+            return res.send({ message: "Password is required" })
         }
         if (!phone) {
-            return res.send({ error: "Phone Number is required" })
+            return res.send({ message: "Phone Number is required" })
         }
         if (!address) {
-            return res.send({ error: "Address is required" })
+            return res.send({ message: "Address is required" })
         }
 
 
@@ -28,7 +28,7 @@ export const registerController = async (req, res) => {
         //existing user
         if (existingUser) {
             return res.status(200).send({
-                status: true,
+                success: false,
                 message: "Already registered please Login"
             })
         }
@@ -37,7 +37,7 @@ export const registerController = async (req, res) => {
         //save
         const user = await new userModel({ name, email, phone, address, password: hashedPassword }).save()
         res.status(201).send({
-            status: true,
+            success: true,
             message: "User registered successfully",
             user
         })

@@ -9,5 +9,9 @@ const router = express.Router()
 router.post("/register", registerController)
 //LOGIN 
 router.post('/login', loginController)
+//protected route auth
+router.post('/user-auth', (req, res) => {
+    res.status(200).send({ ok: true })
+})
 
 export default router
