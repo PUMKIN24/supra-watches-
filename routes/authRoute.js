@@ -14,8 +14,12 @@ router.post('/login', loginController)
 router.post('/forgot-password', forgotPassword)
 //test
 router.get('/test', requireSignIn, isAdmin, testController)
-//protected route auth
-router.post('/user-auth', (req, res) => {
+//protected route auth-user
+router.get('/user-auth', requireSignIn, (req, res) => {
+    res.status(200).send({ ok: true })
+})
+//protected route auth-admin
+router.get('/admin-auth', requireSignIn, isAdmin, (req, res) => {
     res.status(200).send({ ok: true })
 })
 

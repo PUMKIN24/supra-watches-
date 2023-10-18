@@ -61,7 +61,7 @@ export const loginController = async (req, res) => {
         const { email, password } = req.body
         //validation
         if (!email || !password) {
-            res.status(404).send({
+            return res.status(404).send({
                 success: false,
                 message: "Invalid Email or password"
             })
@@ -80,7 +80,6 @@ export const loginController = async (req, res) => {
             return res.status(200).send({
                 success: false,
                 message: "Incorrect password",
-                error
             })
         }
         //token
@@ -91,10 +90,12 @@ export const loginController = async (req, res) => {
             success: true,
             message: "Login successful",
             user: {
+                _id: user._id,
                 name: user.name,
                 email: user.email,
                 address: user.address,
-                phone: user.phone
+                phone: user.phone,
+                role: user.role,
             },
             token
         })
