@@ -36,12 +36,38 @@ const Header = () => {
                                     <NavLink to="/login" className="nav-link" >Login  </NavLink >
                                 </li>
                             </>) : (
-                            <li className="nav-item">
-                                <NavLink to="/login" onClick={handleLogout} className="nav-link" > Logout  </NavLink >
-                            </li>)}
+
+                            <>
+                                <li className="nav-item dropdown">
+                                    <NavLink
+                                        className="nav-link dropdown-toggle"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        style={{ border: "none" }}
+                                    >
+                                        {auth?.user?.name}
+                                    </NavLink>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <NavLink to='/dashboard' className="dropdown-item" href="#">Dashboard</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                onClick={handleLogout}
+                                                to="/login"
+                                                className="dropdown-item">
+                                                Logout
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </>
+                        )}
                         <li className="nav-item">
                             <NavLink to="/cart" className="nav-link" >Cart(0)  </NavLink >
                         </li>
+
                     </ul >
 
                 </div >
