@@ -1,21 +1,22 @@
 import { Routes, Route } from "react-router-dom"
-import HomePage from "../src/pages/HomePage.js"
-import About from "../src/pages/About.js"
-import Policy from "../src/pages/Policy.js"
-import Contact from "../src/pages/Contact.js"
-import PageNotFound from "../src/pages/PageNotFound.js"
-import Register from "./pages/Auth/Register.js"
-import Login from "./pages/Auth/Login.js"
-import Dashboard from "./pages/user/Dashboard.js"
-import PrivateRoute from "./components/Routes/PrivateRoute.js"
-import ForgotPassword from "./pages/Auth/ForgotPassword.js"
-import AdminRoute from "./components/Routes/AdminRoute.js"
-import AdminDashboard from "./pages/Admin/AdminDashboard.js"
+import HomePage from './pages/HomePage';
+import AdminRoute from './components/Routes/AdminRoute';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 import CreateCategory from "./pages/Admin/CreateCategory.js"
-import CreateProduct from "./pages/Admin/CreateProduct.js"
-import Users from "./pages/Admin/Users.js"
-import Orders from "./pages/user/Orders.js"
-import Profile from "./pages/user/Profile.js"
+import CreateProduct from './pages/Admin/CreateProduct';
+import Users from './pages/Admin/Users';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import Dashboard from './pages/user/Dashboard';
+import Orders from './pages/user/Orders';
+import Profile from './pages/user/Profile';
+import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+import About from './pages/About';
+import Policy from './pages/Policy';
+import Contact from './pages/Contact';
+import PageNotFound from './pages/PageNotFound';
+import React from "react";
 
 
 function App() {
