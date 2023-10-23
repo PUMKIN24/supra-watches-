@@ -5,7 +5,7 @@ import morgan from "morgan"
 import connectDB from "./config/db.js"
 import authRoute from "./routes/authRoute.js"
 import categoryRoute from './routes/categoryRoute.js'
-import productRoute from './routes/productRoutes.js'
+import productRoute from './routes/productRoute.js'
 import cors from "cors"
 
 //configure env

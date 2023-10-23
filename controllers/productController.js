@@ -1,10 +1,14 @@
-import slugify from 'slugify'
-import productModel from './../models/productModel.js'
+
+import categoryModel from './../models/categoryModel.js'
 import fs from 'fs'
+import slugify from 'slugify'
+import productModel from '../models/productModel.js'
+
+
 
 export const createProductController = async (req, res) => {
     try {
-        const { name, slug, description, price, category, quantity, shipping } = req.fields
+        const { name, description, price, category, quantity, shipping } = req.fields
         const { photo } = req.files
         //validation
         switch (true) {
@@ -21,10 +25,10 @@ export const createProductController = async (req, res) => {
             case photo && photo.size > 100000:
                 return res.status(500).send({ error: 'Photo is required and should be less than 1mb' })
         }
-        const products = await productModel({ ...req.fields, slug: slugify(name) })
+        const products = new productModel({ ...req.fields, slug: slugify(name) })
         if (photo) {
             products.photo.data = fs.readFileSync(photo.path)
-            products.photo.dataType = photo.type
+            products.photo.contentType = photo.type
         }
         await products.save()
         res.status(201).send({
@@ -36,23 +40,24 @@ export const createProductController = async (req, res) => {
         console.log(error)
         res.status(500).send({
             success: false,
+            error,
             message: 'error while creating product'
         })
     }
 }
-
+//get all product
 export const getProductController = async (req, res) => {
     try {
-        const products = await productModel.find({})
+        const product = await productModel.find({})
             .populate('category')
             .select('-photo')
             .limit(12)
             .sort({ createdAt: -1 })
         res.status(200).send({
             success: true,
-            countTotal: products.length,
+            countTotal: product.length,
             message: 'All Products',
-            products
+            product
         })
     } catch (error) {
         console.log(error)
@@ -91,6 +96,7 @@ export const productPhotoController = async (req, res) => {
             return res.status(200).send(product.photo.data)
         }
     } catch (error) {
+        console.log(error)
         res.status(500).send({
             success: false,
             message: 'error in fetching product photo',
@@ -134,17 +140,17 @@ export const updateProductController = async (req, res) => {
             case photo && photo.size > 100000:
                 return res.status(500).send({ error: 'Photo is required and should be less than 1mb' })
         }
-        const products = await productModel.findByIdAndUpdate(req.params.pid,
+        const product = await productModel.findByIdAndUpdate(req.params.pid,
             { ...req.fields, slug: slugify(name) }, { new: true })
         if (photo) {
-            products.photo.data = fs.readFileSync(photo.path)
-            products.photo.dataType = photo.type
+            product.photo.data = fs.readFileSync(photo.path)
+            product.photo.dataType = photo.type
         }
-        await products.save()
+        await product.save()
         res.status(201).send({
             success: true,
             message: 'Product updated successfully',
-            products
+            product
         })
     } catch (error) {
         console.log(error)

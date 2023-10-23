@@ -17,6 +17,7 @@ import Policy from './pages/Policy';
 import Contact from './pages/Contact';
 import PageNotFound from './pages/PageNotFound';
 import React from "react";
+import Products from "./pages/Admin/Products";
 
 
 function App() {
@@ -28,9 +29,8 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/products" element={<Products />} />
           <Route path="admin/users" element={<Users />} />
-
-
         </Route>
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />

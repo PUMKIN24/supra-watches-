@@ -17,7 +17,13 @@ const CreateProduct = () => {
     const [quantity, setQuantity] = useState("");
     const [shipping, setShipping] = useState("");
     const [photo, setPhoto] = useState("");
-
+    // console.log(categories, 'categories')
+    // console.log(name, 'name')
+    // console.log(description, 'description')
+    // console.log(price, 'price')
+    // console.log(quantity, 'quantity')
+    // console.log(shipping, 'shipping')
+    // console.log(photo, 'photo')
     //get all category
     const getAllCategory = async () => {
         try {
@@ -50,7 +56,10 @@ const CreateProduct = () => {
                 "/api/v1/product/create-product",
                 productData
             );
-            if (data) {
+            if (data?.success) {
+                console.log(data, 'data')
+                console.log(data.success, 'true or false')
+                console.log(data.message, 'datamessage')
                 toast.error(data?.message);
             } else {
                 toast.success("Product Created Successfully");
