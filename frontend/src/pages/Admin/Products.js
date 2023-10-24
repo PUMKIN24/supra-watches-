@@ -37,10 +37,15 @@ const Products = () => {
                                 to={`/dashboard/admin/product/${p.slug}`}
                                 className="product-link"
                             >
-                                <div className="card m-2" style={{ width: "18rem" }}>
+                                <div className="card m-2" style={{
+                                    width: "12rem", height: '25rem', overflow: 'hidden'
+                                }}>
                                     <img
                                         src={`/api/v1/product/product-photo/${p._id}`}
-                                        className="card-img-top"
+                                        className="card-img m-2" style={{
+                                            height: '15rem',
+                                            width: '10rem'
+                                        }}
                                         alt={p.name}
                                     />
                                     <div className="card-body">
@@ -53,7 +58,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     );
 };
 
