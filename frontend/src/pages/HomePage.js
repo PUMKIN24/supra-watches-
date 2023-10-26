@@ -3,11 +3,14 @@ import Layout from "../components/Layout/Layout.js"
 import axios from 'axios';
 import { Checkbox, Radio } from "antd";
 import { Prices } from '../components/Prices.js';
+import { Navigate, useNavigate } from 'react-router-dom';
 const HomePage = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [checked, setChecked] = useState([]);
     const [radio, setRadio] = useState([]);
+
+    const navigate = useNavigate()
 
     //get all cat
     const getAllCategory = async () => {
@@ -82,7 +85,7 @@ const HomePage = () => {
         }
     };
     return (
-        <Layout title={"ALl Products - Best offers "}>
+        <Layout title={"All Products - Best offers "}>
             <div className="container-fluid row mt-3">
                 <div className="col-md-3">
                     <h6 className="text-center">Filter By Category</h6>
@@ -122,7 +125,7 @@ const HomePage = () => {
                         {products?.map((p) => (
                             <div className="card m-1" style={{ width: "14rem", height: '21rem', overflow: 'hidden' }}>
                                 <img
-                                    src={`/api/v1/product/product-photo/${p._id}`}
+                                    src={`/api/v1/product/product-photo/${p?._id}`}
                                     className="m-1" style={{
                                         height: '10rem',
                                         width: '6rem'
@@ -134,7 +137,7 @@ const HomePage = () => {
                                 <p className='p-1'> {p.description.substring(0, 20)}...</p>
                                 <p className='p-1'> RS {p.price}</p>
                                 <div className='d-flex'>
-                                    <button className="btn btn-primary ms-1">More Details</button>
+                                    <button className="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
                                     <button className="btn btn-secondary ms-1">ADD TO CART</button>
                                 </div>
                             </div>
