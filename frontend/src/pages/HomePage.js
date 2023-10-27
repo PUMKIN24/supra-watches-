@@ -126,7 +126,7 @@ const HomePage = () => {
                             <div className="card m-1" style={{ width: "14rem", height: '21rem', overflow: 'hidden' }}>
                                 <img
                                     src={`/api/v1/product/product-photo/${p?._id}`}
-                                    className="m-1" style={{
+                                    className="m-1 mx-auto d-block" style={{
                                         height: '10rem',
                                         width: '6rem'
                                     }}

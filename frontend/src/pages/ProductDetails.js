@@ -70,7 +70,7 @@ const ProductDetails = () => {
                         <div className="card m-2" style={{ width: "18rem" }}>
                             <img
                                 src={`/api/v1/product/product-photo/${p?._id}`}
-                                className="m-1" style={{
+                                className="m-1 mx-auto d-block" style={{
                                     height: '10rem',
                                     width: '6rem'
                                 }}
