@@ -4,11 +4,14 @@ import axios from 'axios';
 import { Checkbox, Radio } from "antd";
 import { Prices } from '../components/Prices.js';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/cart.js';
+import toast from "react-hot-toast";
 const HomePage = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [checked, setChecked] = useState([]);
     const [radio, setRadio] = useState([]);
+    const [cart, setCart] = useCart();
 
     const navigate = useNavigate()
 
@@ -72,7 +75,7 @@ const HomePage = () => {
         if (checked.length || radio.length) filterProduct();
     }, [checked, radio]);
 
-    //get filterd product
+    //get filtered product
     const filterProduct = async () => {
         try {
             const { data } = await axios.post("/api/v1/product/product-filters", {
@@ -138,7 +141,14 @@ const HomePage = () => {
                                 <p className='p-1'> RS {p.price}</p>
                                 <div className='d-flex'>
                                     <button className="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
-                                    <button className="btn btn-secondary ms-1">ADD TO CART</button>
+                                    <button className="btn btn-secondary ms-1" onClick={() => {
+                                        setCart([...cart, p]);
+                                        localStorage.setItem(
+                                            "cart",
+                                            JSON.stringify([...cart, p])
+                                        );
+                                        toast.success("Item Added to cart");
+                                    }}>ADD TO CART</button>
                                 </div>
                             </div>
 
