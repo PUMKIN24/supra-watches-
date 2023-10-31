@@ -7,9 +7,10 @@ const AdminMenu = () => {
             <div className='text-center'>
                 <ul className="list-group">
                     <h4>Admin Panel</h4>
-                    <NavLink to='/dashboard/admin/create-category' className="list-group-item " aria-current="true">Create Category</NavLink>
-                    <NavLink to='/dashboard/admin/create-product' className="list-group-item">Create Product</NavLink>
-                    <NavLink to='/dashboard/admin/products' className="list-group-item">Products</NavLink>
+                    <NavLink to='/dashboard/admin/create-category' className="list-group-item " aria-current="true">Create New Category</NavLink>
+                    <NavLink to='/dashboard/admin/create-product' className="list-group-item">Create New Product</NavLink>
+                    <NavLink to='/dashboard/admin/products' className="list-group-item">All Products</NavLink>
+                    <NavLink to='/dashboard/admin/orders' className="list-group-item">All Orders</NavLink>
                     <NavLink to='/dashboard/admin/users' className="list-group-item" >All Users</NavLink>
                 </ul>
             </div >
