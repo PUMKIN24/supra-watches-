@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useCategory from "../Hooks/useCategory";
 import Layout from "../components/Layout/Layout";
+import useCategory from "../Hooks/useCategory";
 const Categories = () => {
     const categories = useCategory();
     return (
         <Layout title={"All Categories"}>
             <div className="container">
-                <div className="row">
+                <div className="row m-5">
                     {categories.map((c) => (
-                        <div className="col-md-6 mt-5 mb-3 gx-3 gy-3" key={c._id}>
-                            <Link to={`/category/${c.slug}`} className="btn btn-primary">
+                        <div className="d-grid gap-2 m-2" key={c._id}>
+                            <Link className="btn btn-warning" to={`/category/${c.slug}`} >
                                 {c.name}
                             </Link>
                         </div>

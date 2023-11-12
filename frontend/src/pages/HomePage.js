@@ -3,9 +3,10 @@ import Layout from "../components/Layout/Layout.js"
 import axios from 'axios';
 import { Checkbox, Radio } from "antd";
 import { Prices } from '../components/Prices.js';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cart.js';
 import toast from "react-hot-toast";
+
 const HomePage = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -103,7 +104,7 @@ const HomePage = () => {
                         ))}
                     </div>
                     {/* price filter */}
-                    <h6 className="text-center mt-4">Filter By Price</h6>
+                    <h6 className="text-center m-2">Filter By Price</h6>
                     <div className="d-flex flex-column">
                         <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                             {Prices?.map((p) => (
@@ -113,7 +114,7 @@ const HomePage = () => {
                             ))}
                         </Radio.Group>
                     </div>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column m-3">
                         <button
                             className="btn btn-danger"
                             onClick={() => window.location.reload()}
@@ -140,7 +141,7 @@ const HomePage = () => {
                                 <p className='p-1'> {p.description.substring(0, 20)}...</p>
                                 <p className='p-1'> RS {p.price}</p>
                                 <div className='d-flex'>
-                                    <button className="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
+                                    <button className="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>Details</button>
                                     <button className="btn btn-secondary ms-1" onClick={() => {
                                         setCart([...cart, p]);
                                         localStorage.setItem(
@@ -148,7 +149,7 @@ const HomePage = () => {
                                             JSON.stringify([...cart, p])
                                         );
                                         toast.success("Item Added to cart");
-                                    }}>ADD TO CART</button>
+                                    }}>Add to 🛒 </button>
                                 </div>
                             </div>
 
